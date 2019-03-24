@@ -8,12 +8,16 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', {useNewUrlParser: true}
     console.log("Connected to MongoDb...");
     const db = client.db('TodoApp');
 
-    db.collection('Todos').find().toArray().then((docs) => {
-        console.log('Todos');
-        console.log(JSON.stringify(docs, undefined, 2));
-    }, (err) => {
-        console.log("Unable to get data", err);
+    // deleteMany
+    db.collection('Todos').deleteMany({text: 'Eat something'}).then((result) => {
+        console.log(result);
     });
+    
+    
+    // deleteOne
+
+    // findOneAndDelete
+
 
     // client.close();
 });
